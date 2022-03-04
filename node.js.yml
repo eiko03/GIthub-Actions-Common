@@ -1,0 +1,16 @@
+name: Run Unit Tests and Lint Files
+"on": push
+jobs:
+  unit_test-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install
+        run : npm install
+
+      - name: lint
+        run : npm run lint --fix
+
+      - name: test
+        run : npm run test:unit -- --coverage
